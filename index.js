@@ -7,35 +7,35 @@ const puppeteerService = require('./services/puppeteer.service');
 const MUSTACHE_MAIN_DIR = './main.mustache';
 
 let DATA = {
-  refresh_date: new Date().toLocaleDateString('en-GB', {
+  refresh_date: new Date().toLocaleDateString('es-AR', {
     weekday: 'long',
     month: 'long',
     day: 'numeric',
     hour: 'numeric',
     minute: 'numeric',
     timeZoneName: 'short',
-    timeZone: 'Europe/Stockholm',
+    timeZone: 'UTC',
   }),
 };
 
 async function setWeatherInformation() {
   await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=stockholm&appid=${process.env.OPEN_WEATHER_MAP_KEY}&units=metric`
+    `https://api.openweathermap.org/data/2.5/weather?q=argentina&appid=${process.env.OPEN_WEATHER_MAP_KEY}&units=metric`
   )
     .then(r => r.json())
     .then(r => {
       DATA.city_temperature = Math.round(r.main.temp);
       DATA.city_weather = r.weather[0].description;
       DATA.city_weather_icon = r.weather[0].icon;
-      DATA.sun_rise = new Date(r.sys.sunrise * 1000).toLocaleString('en-GB', {
+      DATA.sun_rise = new Date(r.sys.sunrise * 1000).toLocaleString('es-AR', {
         hour: '2-digit',
         minute: '2-digit',
-        timeZone: 'Europe/Stockholm',
+        timeZone: 'UTC',
       });
-      DATA.sun_set = new Date(r.sys.sunset * 1000).toLocaleString('en-GB', {
+      DATA.sun_set = new Date(r.sys.sunset * 1000).toLocaleString('es-AR', {
         hour: '2-digit',
         minute: '2-digit',
-        timeZone: 'Europe/Stockholm',
+        timeZone: 'UTC',
       });
     });
 }
