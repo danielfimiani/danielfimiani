@@ -4,7 +4,9 @@
   "description": "<!--\r **danielfimiani/danielfimiani** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.",
   "main": "index.js",
   "dependencies": {
-    "mustache": "^4.2.0"
+    "dotenv": "^8.2.0",
+    "mustache": "^4.2.0",
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {},
   "scripts": {
